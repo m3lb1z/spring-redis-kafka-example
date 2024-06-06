@@ -2,6 +2,7 @@ package dev.emrx.users.controllers;
 
 import dev.emrx.users.entities.User;
 import dev.emrx.users.services.UserService;
+import io.micrometer.core.annotation.Timed;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +24,7 @@ public class UserController {
 //    }
 
     @GetMapping
+    @Timed("get.users")
     public ResponseEntity<Page<User>> findAllUsers(
             @RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
             @RequestParam(value = "size", required = false, defaultValue = "20") Integer size) {
