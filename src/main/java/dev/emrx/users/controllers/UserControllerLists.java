@@ -2,6 +2,7 @@ package dev.emrx.users.controllers;
 
 import dev.emrx.users.models.UserList;
 import dev.emrx.users.services.UserServiceLists;
+import io.swagger.v3.oas.annotations.Hidden;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/users-lists")
+@Hidden
 public class UserControllerLists {
 
     @Autowired
