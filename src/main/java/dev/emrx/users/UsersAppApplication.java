@@ -25,7 +25,7 @@ public class UsersAppApplication implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        for (int ind = 0; ind < 20; ind++) {
+        for (int ind = 0; ind < 200; ind++) {
             User user = new User();
             user.setUsername(faker.name().username());
             user.setPassword(faker.dragonBall().character());
