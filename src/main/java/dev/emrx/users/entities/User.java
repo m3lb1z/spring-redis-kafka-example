@@ -24,8 +24,8 @@ public class User implements Serializable {
     private String username;
     @Column(name = "password")
     private String password;
-    @OneToOne
-    @JoinColumn(name = "profile_id", referencedColumnName = "profile_id")
-    private Profile profile;
+//    @OneToOne
+//    @JoinColumn(name = "profile_id", referencedColumnName = "profile_id")
+//    private Profile profile;
 
 }

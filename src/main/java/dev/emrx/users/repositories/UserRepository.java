@@ -1,5 +1,6 @@
 package dev.emrx.users.repositories;
 
+import dev.emrx.users.entities.Profile;
 import dev.emrx.users.entities.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

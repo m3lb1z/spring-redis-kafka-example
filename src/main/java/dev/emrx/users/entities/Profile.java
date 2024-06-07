@@ -24,4 +24,9 @@ public class Profile {
     private String lastname;
     @Column(name = "birth_date")
     private Date birthDate;
+
+    @OneToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    private User user;
+
 }
