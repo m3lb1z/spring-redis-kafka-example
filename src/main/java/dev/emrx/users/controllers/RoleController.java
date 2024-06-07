@@ -1,6 +1,7 @@
 package dev.emrx.users.controllers;
 
 import dev.emrx.users.entities.Role;
+import dev.emrx.users.entities.User;
 import dev.emrx.users.services.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -39,6 +40,11 @@ public class RoleController {
     public ResponseEntity<Void> deleteRole(@PathVariable("roleId") Integer roleId) {
         roleService.deleteRole(roleId);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/roleName/{roleName}/users")
+    public ResponseEntity<List<User>> getUsersByRoleName(@PathVariable("roleName") String roleName) {
+        return ResponseEntity.ok(roleService.findAllUsersByRoleName(roleName));
     }
 
 }

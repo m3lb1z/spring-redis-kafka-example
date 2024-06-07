@@ -1,7 +1,9 @@
 package dev.emrx.users.services;
 
 import dev.emrx.users.entities.Role;
+import dev.emrx.users.entities.User;
 import dev.emrx.users.repositories.RoleRepository;
+import dev.emrx.users.repositories.UserInRoleRepository;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +18,9 @@ public class RoleService {
 
     @Autowired
     private RoleRepository repository;
+
+    @Autowired
+    private UserInRoleRepository userInRoleRepository;
 
     @PostConstruct
     public void init() {
@@ -48,5 +53,9 @@ public class RoleService {
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Role id %d doesn't exits.".formatted(roleId));
         }
+    }
+
+    public List<User> findAllUsersByRoleName(String roleName) {
+        return userInRoleRepository.findAllUsersByRoleName(roleName);
     }
 }
