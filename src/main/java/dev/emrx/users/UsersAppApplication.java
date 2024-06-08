@@ -43,7 +43,7 @@ public class UsersAppApplication implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
         List<Role> roles = roleRepository.findAll();
 
-        for (int ind = 0; ind < 50; ind++) {
+        for (int ind = 0; ind < 20; ind++) {
             User user = new User();
             user.setUsername(faker.name().username());
             user.setPassword(faker.dragonBall().character());

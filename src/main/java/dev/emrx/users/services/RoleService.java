@@ -1,10 +1,13 @@
 package dev.emrx.users.services;
 
+import dev.emrx.users.configs.annotation.IsAdminOrUserRule;
 import dev.emrx.users.entities.Role;
 import dev.emrx.users.entities.User;
 import dev.emrx.users.repositories.RoleRepository;
 import dev.emrx.users.repositories.UserInRoleRepository;
 import jakarta.annotation.PostConstruct;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -14,8 +17,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+//@IsAdminOrUserRule
 public class RoleService {
 
+    private static final Logger log = LoggerFactory.getLogger(RoleService.class);
     @Autowired
     private RoleRepository repository;
 
@@ -55,7 +60,9 @@ public class RoleService {
         }
     }
 
+    @IsAdminOrUserRule
     public List<User> findAllUsersByRoleName(String roleName) {
+        log.info("Finding all users by role name {}", roleName);
         return userInRoleRepository.findAllUsersByRoleName(roleName);
     }
 }

@@ -9,6 +9,7 @@ import dev.emrx.users.repositories.UserInRoleRepository;
 import dev.emrx.users.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -43,6 +44,7 @@ public class RoleInUsersService {
         }
     }
 
+    @Secured({"ROLE_ADMIN"})
     public List<User> getAllUsersInRole(Integer roleId) {
         return userInRoleRepository.findAllUsersInRole(roleId);
     }
